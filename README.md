@@ -1,6 +1,7 @@
 # yaml-cpp-docker
 
-## Docker image from: https://hub.docker.com/_/ubuntu?tab=description&page=1&name=bioni
+## Docker image
+https://hub.docker.com/_/ubuntu?tab=description&page=1&name=bioni
 
 ## Errors during build
 
@@ -15,9 +16,7 @@ CMake Error at CMakeLists.txt:3 (project):
   variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
   to the compiler, or to the compiler name if it is in the PATH.
 
-
 -- Configuring incomplete, errors occurred!
-
 
 ### gcc: error trying to exec 'cc1plus': execvp: No such file or directory
 
@@ -48,22 +47,17 @@ CMake Error at /usr/share/cmake-3.10/Modules/CMakeTestCXXCompiler.cmake:45 (mess
     Makefile:126: recipe for target 'cmTC_e07bc/fast' failed
     make: *** [cmTC_e07bc/fast] Error 2
 
-
-
-
   CMake will not be able to correctly generate this project.
 Call Stack (most recent call first):
   CMakeLists.txt:3 (project)
 
-
 -- Configuring incomplete, errors occurred!
-
 
 https://stackoverflow.com/questions/8878676/compile-error-g-error-trying-to-exec-cc1plus-execvp-no-such-file-or-dir/22072238
 
 ### Could NOT find PythonInterp (missing: PYTHON_EXECUTABLE)
-https://stackoverflow.com/questions/24174394/cmake-is-not-able-to-find-python-libraries
 
+https://stackoverflow.com/questions/24174394/cmake-is-not-able-to-find-python-libraries
 
 ### add_executable
 
@@ -90,7 +84,6 @@ CMake Error at test/CMakeLists.txt:33 (target_compile_options):
 CMake Error at test/CMakeLists.txt:37 (target_link_libraries):
   Cannot specify link libraries for target "yaml-cpp-tests" which is not
   built by this project.
-
 
 -- Configuring incomplete, errors occurred!
 See also "/yaml-cpp/build/CMakeFiles/CMakeOutput.log".
