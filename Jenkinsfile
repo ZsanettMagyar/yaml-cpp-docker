@@ -1,6 +1,7 @@
 node {
     stage('Docker build') {
         try {
+          checkout scm
           withDockerRegistry([url: "", credentialsId: "dockerhub-cred"]){
             sh "pwd"
             sh "ls -l"
