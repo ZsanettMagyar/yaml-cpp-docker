@@ -1,11 +1,16 @@
 FROM ubuntu:18.04
 
 RUN apt-get update && apt-get install -y git \
-    cmake
+    gcc \
+    g++ \
+    cmake \
+    python-dev
 
-RUN git clone https://github.com/jbeder/yaml-cpp.git
+RUN export CXX=/usr/bin/gcc
 
-RUN mkdir build  && \
+RUN git clone https://github.com/jbeder/yaml-cpp.git \
+    cd yaml-cpp && \
+    mkdir build  && \
     cd build && \
     cmake .. && \
     make && \
