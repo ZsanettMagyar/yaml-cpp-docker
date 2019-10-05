@@ -25,7 +25,7 @@ Base image is Ubuntu Bionic (18.04): https://hub.docker.com/_/ubuntu?tab=descrip
   - cmake
   - python-dev
 
-These installations will avoid the following errors during the build:
+#### These installations will avoid the following errors during the build:
 1.  No CMAKE_CXX_COMPILER could be found.
 
 ```console
@@ -99,7 +99,14 @@ https://stackoverflow.com/questions/50300939/cmake-add-executable-called-with-in
 
 5. Undefined reference to 'operator delete(void*)'
 
+Solution:
+
+export CXX=/usr/bin/g++
+
+export CXXFLAGS='-D_GLIBCXX_USE_CXX11_ABI=0'
+
 https://stackoverflow.com/questions/7015285/undefined-reference-to-operator-deletevoid
+
 
 ### Clone the yaml-cpp project
 
@@ -108,4 +115,42 @@ Verified commit: https://github.com/jbeder/yaml-cpp/tree/9a3624205e8774953ef18f5
 ### Build the yaml-cpp project
 
 Installation steps: https://github.com/jbeder/yaml-cpp/blob/9a3624205e8774953ef18f57067b3426c1c5ada6/install.txt
+
+### Create the .tar.gz file
+
+I created a tar.gz file from the "build" directory.
+After the installation it is accessible on the host machine. I used "docker cp" for it.
+
+Name: yaml-cpp-$version.tar.gz
+
+## Jenkinsfile
+
+I use a scripted pipeline (https://jenkins.io/doc/book/pipeline/syntax/#scripted-pipeline).
+
+The pipeline executes on the node with the label "master".
+
+### Stages
+
+1. Prepare
+Checkout the repository defined in the Jenkins Multibranch Job's GUI.
+Thir is the ZsanettMagyar/yaml-cpp-docker repository.
+
+I had to define a credential for the checkout called "github-cred". 
+
+2. Docker build
+Docker build from the Dockerfile with tag "yaml-cpp-builder:0.1"
+
+3. Docker run & cp
+Runs the image built in the previous stage, and copy the "build" directory, and the created .tar.gz file to the host.
+
+4. List build
+Show the copied build directory
+
+
+### Used Plugins
+ - Pipeline: Multibranch
+ - Credentials / Credential Binding
+ - GitHub Branch Source
+ 
+
 
