@@ -16,6 +16,10 @@ node {
         sh "docker cp yaml-cpp-builder:/yaml-cpp/build ."
       }
     }
+    stage('Docker rm'){
+      sh "docker stop yaml-cpp-builder"
+      sh "docker rm yaml-cpp-builder"
+    }
     stage('Docker push'){
       withDockerRegistry([url: "", credentialsId: docker_credential]){
         sh "docker push zsanettmagyar/${artifact}"
