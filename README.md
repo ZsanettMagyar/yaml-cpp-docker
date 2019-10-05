@@ -135,22 +135,34 @@ The pipeline executes on the node with the label "master".
 Checkout the repository defined in the Jenkins Multibranch Job's GUI.
 Thir is the ZsanettMagyar/yaml-cpp-docker repository.
 
-I had to define a credential for the checkout called "github-cred". 
+I had to define a credential (username-password) for the checkout called "github-cred". 
 
 2. Docker build
+
 Docker build from the Dockerfile with tag "yaml-cpp-builder:0.1"
+Docker login to DockerHub with credential (username-password) called "dockerhub-cred".
 
 3. Docker run & cp
-Runs the image built in the previous stage, and copy the "build" directory, and the created .tar.gz file to the host.
+
+Run the image built in the previous stage (memory limit is 500m).
+Copy the "build" directory, and the created .tar.gz file to the host.
 
 4. List build
-Show the copied build directory
 
+Show the copied "build" directory and it's files.
 
-### Used Plugins
+5. Removing the container
+
+Stop and remove the running container.
+
+## Used Jenkins Plugins
  - Pipeline: Multibranch
  - Credentials / Credential Binding
  - GitHub Branch Source
+ - Docker Pipeline
  
-
-
+ # Jenkins_job folder
+ 
+ It is not necessary for the project build, it contains:
+ 1. Multibranch Job's config.xml
+ 2. The job's console output (log).
