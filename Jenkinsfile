@@ -12,9 +12,12 @@ node("master") {
     }
     stage('Docker run & cp'){
       withDockerRegistry([url: "", credentialsId: docker_credential]){
-        sh "docker run -d -ti --hostname yaml-cpp-builder -m 2G --name yaml-cpp-builder yaml-cpp-builder:0.1 /bin/bash"
+        sh "docker run -d -ti --hostname yaml-cpp-builder -m 500m --name yaml-cpp-builder yaml-cpp-builder:0.1 /bin/bash"
         sh "docker cp yaml-cpp-builder:/yaml-cpp/build ."
       }
+    }
+    stage('List compiled results'){
+      sh "ls -lrt $WORKSPACE/build"
     }
     stage('Docker rm'){
       sh "docker stop yaml-cpp-builder"
