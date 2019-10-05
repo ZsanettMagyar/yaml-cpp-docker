@@ -64,29 +64,10 @@ https://stackoverflow.com/questions/24174394/cmake-is-not-able-to-find-python-li
 -- Found PythonInterp: /usr/bin/python (found version "2.7.15")
 CMake Error at test/CMakeLists.txt:23 (add_executable):
   add_executable called with incorrect number of arguments
+ ....
+https://stackoverflow.com/questions/50300939/cmake-add-executable-called-with-incorrect-number-of-arguments
 
+--> use the verified commit: 9a3624205e8774953ef18f57067b3426c1c5ada6
 
-CMake Error at test/CMakeLists.txt:24 (target_sources):
-  Cannot specify sources for target "yaml-cpp-tests" which is not built by
-  this project.
-
-
-CMake Error at test/CMakeLists.txt:28 (target_include_directories):
-  Cannot specify include directories for target "yaml-cpp-tests" which is not
-  built by this project.
-
-
-CMake Error at test/CMakeLists.txt:33 (target_compile_options):
-  Cannot specify compile options for target "yaml-cpp-tests" which is not
-  built by this project.
-
-
-CMake Error at test/CMakeLists.txt:37 (target_link_libraries):
-  Cannot specify link libraries for target "yaml-cpp-tests" which is not
-  built by this project.
-
--- Configuring incomplete, errors occurred!
-See also "/yaml-cpp/build/CMakeFiles/CMakeOutput.log".
-See also "/yaml-cpp/build/CMakeFiles/CMakeError.log".
-
-https://stackoverflow.com/questions/50300939/cmake-add-executable-called-with-incorrect-number-of-arguments ???
+### Undefined reference to 'operator delete(void*)'
+https://stackoverflow.com/questions/7015285/undefined-reference-to-operator-deletevoid
