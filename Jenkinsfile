@@ -1,4 +1,4 @@
-node {
+node("master") {
   def artifact="yaml-cpp-builder:0.1"
   def docker_credential="dockerhub-cred"
   try{
@@ -19,11 +19,6 @@ node {
     stage('Docker rm'){
       sh "docker stop yaml-cpp-builder"
       sh "docker rm yaml-cpp-builder"
-    }
-    stage('Docker push'){
-      withDockerRegistry([url: "", credentialsId: docker_credential]){
-        sh "docker push zsanettmagyar/${artifact}"
-      }
     }
   } catch(Exception ex) {
       throw ex
