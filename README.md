@@ -10,6 +10,7 @@ I have a CentOS7 virtual machine intsalled from: http://ftp.bme.hu/centos/7.5.18
 
 Installed tools on CentOS:
   - Docker CE (https://docs.docker.com/install/linux/docker-ce/centos/#install-docker-ce)
+  
     For using docker I created a unix group (dockergrp) and a unix user (dockermgr) according to https://docs.docker.com/install/linux/linux-postinstall/
   - Jenkins 2.151 
       - scripts for building Jenkins in docker: https://github.com/ZsanettMagyar/CICD/tree/master/build/docker/jenkins)
@@ -40,6 +41,8 @@ CMake Error at CMakeLists.txt:3 (project):
 
 -- Configuring incomplete, errors occurred!
 ```
+
+Solution: export CXX=/usr/bin/gcc
 
 2. gcc: error trying to exec 'cc1plus': execvp: No such file or directory
 
@@ -133,7 +136,7 @@ The pipeline executes on the node with the label "master".
 
 1. Prepare
 Checkout the repository defined in the Jenkins Multibranch Job's GUI.
-Thir is the ZsanettMagyar/yaml-cpp-docker repository.
+This is the ZsanettMagyar/yaml-cpp-docker repository.
 
 I had to define a credential (username-password) for the checkout called "github-cred". 
 
